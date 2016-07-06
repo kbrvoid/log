@@ -36,9 +36,8 @@ var getLog = function(id) {
         'SELECT * FROM logs WHERE id = ?',
         [id],
         function (rows) {
-            var row = row[0];
-            model = {title:row[1], content: row[2]};
-            // console.log(model);
+            var row = rows[0];
+            model = {id:row[0], title:row[1], content: row[2]};
         }
     );
     return model;
