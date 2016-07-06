@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var storage = require('./src/storage');
 var view = require('./src/view');
+var fs = require('fs');
+var template = fs.readFileSync("./views/template/template.html", "utf-8");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/views/public'));
@@ -21,18 +23,19 @@ app.get('/form', function(req, res) {
 app.post('/new', function(req, res) {
    var body = req.body,
        title = body.title,
-       content = body.content;
-    storage.addLog(title, content);
-    res.redirect("/lol")
+       content = body.content,
+       id = storage.generateId();
+    storage.addLog(id, title, content);
+    res.redirect("/" + id);
 });
 
 app.get("/:id", function(req, res) {
     var urlId = req.params["id"];
-    // console.log(storage.getLog(link));
     var log = storage.getLog(urlId);
     console.log(log);
     // var content = view.render(log.title, log.content);
-    // res.send(content);
+    res.set('Content-Type', 'text/html');
+    res.send(new Buffer(template.replace(/{{title}}/g, storage.getTitle(urlId)).replace(/{{content}}/g, storage.getContent(urlId))));
 });
 
 app.listen(process.env.PORT, function (req, res) {
