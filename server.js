@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var storage = require('./src/storage');
 var view = require('./src/view');
+var color = require("./extra/color");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/views/public'));
@@ -23,11 +24,12 @@ var log = function () {
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + "/views/index.html"));
-    log("User with IP: '" + req.ip + "' Just Visited Log")
+    log(color.green("User with IP: '" + req.ip + "' Just Visited Log"));
 });
 
 app.get('/form', function(req, res) {
-   res.sendFile(path.join(__dirname + "/views/form/form.html")); 
+   res.sendFile(path.join(__dirname + "/views/form/form.html"));
+   log(color.green("User is on the Form"));
 });
 
 app.post('/new', function(req, res) {
@@ -37,6 +39,7 @@ app.post('/new', function(req, res) {
        id = storage.generateId();
     storage.addLog(id, title, content);
     res.redirect("/" + id);
+    log(color.blue("User posted to /new"));
 });
 
 app.get(/\/([a-z0-9]+)/, function(req, res) {
@@ -44,6 +47,7 @@ app.get(/\/([a-z0-9]+)/, function(req, res) {
     res.set('Content-Type', 'text/html');
     var log = storage.getLog(urlId);
     res.send(new Buffer(view.render(log.title, log.content)));
+    log(color.green("User visited '/" + urlId + "'"))
 });
 
 app.listen(process.env.PORT, function (req, res) {
