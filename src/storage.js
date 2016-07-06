@@ -1,6 +1,5 @@
 var dblite = require('dblite');
 var db = dblite('database.sqlite');
-// var id;
 var model;
 
 var init = function() {
@@ -32,15 +31,31 @@ db.query(
 }
 
 var getLog = function(id) {
-    db.query(
-        'SELECT * FROM logs WHERE id = ?',
-        [id],
-        function (rows) {
-            var row = rows[0];
-            model = {id:row[0], title:row[1], content: row[2]};
+    // db.query(
+    //     'SELECT * FROM logs WHERE id = ?',
+    //     [id],
+    //     function (rows) {
+    //         var row = rows[0];
+    //         model = {id:row[0], title:row[1], content: row[2]};
+    //     }
+    // );
+    // return model;
+    
+    return new Promise(function(resolve, reject) {
+        db.query(
+            'SELECT * FROM logs WHERE id = ?',
+            [id],
+            function (rows) {
+                var row = rows[0];
+                model = {id:row[0], title:row[1], content: row[2]};
+            }
+        );
+        if(model !== undefined) {
+            resolve(model)
+        } else {
+            reject("FAIL")
         }
-    );
-    return model;
+    });
 }
 
 var getTitle = function(id) {

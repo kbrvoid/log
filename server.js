@@ -21,6 +21,9 @@ var log = function () {
   console.log.apply(console, message);
 }
 
+var notFound = res => res.send(`<h1>404</h1><br><span style='font-size: 3vh'>Not Found</span>`);
+
+
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + "/views/index.html"));
@@ -45,9 +48,14 @@ app.post('/new', function(req, res) {
 app.get(/\/([a-z0-9]+)/, function(req, res) {
     var urlId = req.params["0"];
     res.set('Content-Type', 'text/html');
-    var log = storage.getLog(urlId);
-    res.send(new Buffer(view.render(log.title, log.content)));
-    log(color.green("User visited '/" + urlId + "'"))
+    if (storage.getLog(urlId) === undefined) {
+        notFound(res);
+        log(color.yellow("404 Not Found"));
+    } else {
+        var currentLog = storage.getLog(urlId);
+        res.send(new Buffer(view.render(currentLog.title, currentLog.content)));
+        log(color.green("User visited '/" + urlId + "'"));
+    }
 });
 
 app.listen(process.env.PORT, function (req, res) {
