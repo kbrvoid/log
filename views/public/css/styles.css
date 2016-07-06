@@ -1,4 +1,70 @@
-html, body {
-    margin: 0;
-    padding: 0;
+body {
+    /*background: linear-gradient(45deg, #246655, #5b378a, #fa179c, #4850e6, #2ecbe3, #4cfdb9, #2bc0e4, #eaecc6, #c02425, #f0cb35, #403a3e, #be5869);*/
+    /*background-size: 2400% 2400%;*/
+
+    /*-webkit-animation: gradient 30s ease infinite;*/
+    /*-moz-animation: gradient 30s ease infinite;*/
+    /*animation: gradient 30s ease infinite;*/
+    background-image: url('https://images.unsplash.com/photo-1444424050109-31f057e1e858?crop=entropy&fit=crop&fm=jpg&h=650&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375');
+
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+    color: white;
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-size: 7rem;
+}
+
+button {
+    z-index: 1000 !important;
+	padding: 20px 80px !important;
+    text-decoration: none;
+    border: 2px solid #333 !important;
+    color: white !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Quicksand' !important;
+    font-size: 13px;
+    letter-spacing: 3px;
+    -webkit-transition: all .2s ease-in-out !important;
+    transition: all .2s ease-in-out !important;
+}
+
+
+button:hover {
+	background: #333 !important;
+    border: 1px solid #333 !important;
+    color: #fefefe !important;
+    border-radius: 30px;
+    opacity: 1 !important;
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes gradient { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
