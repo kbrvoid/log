@@ -1,7 +1,30 @@
 body {
-    color: white;
+    color: black;
 }
 
-h1 {
-    font-family: "Montserrat";
+form {
+    height: 100%;
+}
+
+input, textarea {
+    border: none !important;
+    background: transparent;
+}
+
+input:focus, textarea:focus {
+    border: none !important;
+}
+
+input[type=submit] {
+  right: 5%;  
+  position: fixed;
+}
+
+textarea {
+    font-size: 2rem;
+}
+
+#title {
+    font-size: 7rem;
+    font-family: 'Montserrat'
 }

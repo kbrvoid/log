@@ -13,12 +13,11 @@
 </head>
 <body>
 	<div class="container">
-	    <h3>Create A Log</h3
-	    <input type="text" name="title" placeholder="Title"/>
-	    <textarea name="content" placeholder="Your Log">
-	        
-	    </textarea>
-	    <input type="submit"/>
+	    <form action="/new" method="POST">
+	        <input type="text" name="title" id="title" placeholder="Title"/>
+	        <textarea name="content" placeholder="Your Log"></textarea>
+	        <input type="submit"/>
+	    </form>
 	</div>
 </body>
 </html>
