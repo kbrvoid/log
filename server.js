@@ -50,7 +50,7 @@ app.get(/\/([a-z0-9]+)/, function(req, res) {
         if(!currentLog) {
             notFound(res);
         }
-        var html = view.render(currentLog.title, currentLog.content);
+        var html = view.render(currentLog.id, currentLog.title, currentLog.content);
         res.send(new Buffer(html));
         log(color.green("User visited '/" + urlId + "'"));
     });
