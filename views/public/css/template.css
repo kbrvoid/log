@@ -1,4 +1,11 @@
+.container {
+    text-align: left;
+    width: 60% !important;
+}
 
+#title {
+    font-family: "Montserrat";
+}
 
 footer {
 	text-align: center;
