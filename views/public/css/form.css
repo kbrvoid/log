@@ -28,6 +28,7 @@ textarea {
 #content {
     outline: none;
     font-size: 2rem;
+    margin: 0;
 }
 
 #title {
@@ -36,5 +37,6 @@ textarea {
 }
 
 [contentEditable=true]:empty:not(:focus):before{
-    content:attr(data-text)
+    content:attr(data-text);
+    color: #ccc;
 }
