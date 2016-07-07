@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(45deg, #246655, #5b378a, #fa179c, #4850e6, #2ecbe3, #4cfdb9, #2bc0e4, #eaecc6, #c02425, #f0cb35, #403a3e, #be5869);
+    background-size: 2400% 2400%;
+
+    -webkit-animation: gradient 30s ease infinite;
+    -moz-animation: gradient 30s ease infinite;
+    animation: gradient 30s ease infinite;
+    color: white;
+}
+
+h1 {
+    font-size:7rem;
+    font-weight:bolder;
+    font-family: 'Montserrat';
+}
+
+p {
+    font-size: 2rem;
+    font-family: 'Quicksand';
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes gradient { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

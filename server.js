@@ -20,7 +20,7 @@ var log = function () {
   console.log.apply(console, message);
 }
 
-var notFound = res => res.send(`<h1>404</h1><br><span style='font-size: 3vh'>Not Found</span>`);
+var notFound = res => res.sendFile(path.join(__dirname + "/views/404.html"));
 
 
 
