@@ -22,13 +22,11 @@ input[type=submit] {
 
 textarea {
     font-size: 2rem;
-    display: none;
 }
 
 #content {
     outline: none;
     font-size: 2rem;
-    margin: 0;
 }
 
 #title {
@@ -41,7 +39,7 @@ textarea {
     position: fixed;
 }
 
-[contentEditable=true]:empty:not(:focus):before{
-    content:attr(data-text);
-    color: #ccc;
-}
+/*[contentEditable=true]:empty:not(:focus):before{*/
+/*    content:attr(data-text);*/
+/*    color: #ccc;*/
+/*}*/
