@@ -8,6 +8,7 @@ body {
 }
 
 #title {
+    font-size: 7rem;
     font-family: "Montserrat";
 }
 
@@ -22,4 +23,8 @@ footer {
 
 footer a {
     text-decoration: none;
+}
+
+article {
+    font-size: 2rem;
 }
