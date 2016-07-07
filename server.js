@@ -9,7 +9,6 @@ var color = require("./extra/color");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/views/public'));
 
-storage.init();
 
 var log = function () {
   var date = new Date();
@@ -39,23 +38,22 @@ app.post('/new', function(req, res) {
    var body = req.body,
        title = body.title,
        content = body.content,
-       id = storage.generateId();
-    storage.addLog(id, title, content);
-    res.redirect("/" + id);
+       redirectToLog = log => res.redirect("/" + log.id);
+    storage.addLog(title, content).then(redirectToLog);
     log(color.blue("User posted to /new"));
 });
 
 app.get(/\/([a-z0-9]+)/, function(req, res) {
     var urlId = req.params["0"];
     res.set('Content-Type', 'text/html');
-    if (storage.getLog(urlId) === undefined) {
-        notFound(res);
-        log(color.yellow("404 Not Found"));
-    } else {
-        var currentLog = storage.getLog(urlId);
-        res.send(new Buffer(view.render(currentLog.title, currentLog.content)));
+    storage.getLog(urlId).then(currentLog => {
+        if(!currentLog) {
+            notFound(res);
+        }
+        var html = view.render(currentLog.title, currentLog.content);
+        res.send(new Buffer(html));
         log(color.green("User visited '/" + urlId + "'"));
-    }
+    });
 });
 
 app.listen(process.env.PORT, function (req, res) {

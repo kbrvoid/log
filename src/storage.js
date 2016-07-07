@@ -1,78 +1,44 @@
-var dblite = require('dblite');
-var db = dblite('database.sqlite');
-var model;
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('database', 'username', 'password', {
+  dialect: 'sqlite',
 
-var init = function() {
-    db.query('CREATE TABLE IF NOT EXISTS logs (id TEXT, title TEXT, content TEXT)');
-}
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+
+  storage: 'database.sqlite'
+});
+
+var Log = sequelize.define('Log', {
+    id: { type: Sequelize.STRING(7), unique: true, primaryKey: true },
+    title: Sequelize.TEXT,
+    content: Sequelize.TEXT 
+});
+
+sequelize.sync();
+
 
 var generateId = () => [1, 1, 1, 1, 1, 1, 1]
-  .map(() => {
-    var code = Math.floor(Math.random() * 36);
-    return String.fromCharCode(code + (code < 10 ? 48 : 87));
-  })
-  .join("");
-  
-// var getFreeId = () => {
-//   id = generateId();
-//   return getLog(id) === undefined ? id : getFreeId();
-// };
+    .map(() => {
+        var code = Math.floor(Math.random() * 36);
+        return String.fromCharCode(code + (code < 10 ? 48 : 87));
+    })
+    .join("");
+
+var getFreeId = () => {
+    var id = generateId();
+    return Log.findById(id).then(result => result ? getFreeId() : id);
+};
 
 
-var addLog = function(id, title, content) {
-db.query(
-  'INSERT INTO logs VALUES (:id, :title, :content)',
-  {
+module.exports.getLog = function(id) {
+    return Log.findById(id);
+}
+
+module.exports.addLog = (title, content) => getFreeId().then(id => Log.create({
     id: id,
     title: title,
     content: content
-  }
-);
-}
-
-var getLog = function(id) {
-    // db.query(
-    //     'SELECT * FROM logs WHERE id = ?',
-    //     [id],
-    //     function (rows) {
-    //         var row = rows[0];
-    //         model = {id:row[0], title:row[1], content: row[2]};
-    //     }
-    // );
-    // return model;
-    
-    return new Promise(function(resolve, reject) {
-        db.query(
-            'SELECT * FROM logs WHERE id = ?',
-            [id],
-            function (rows) {
-                var row = rows[0];
-                model = {id:row[0], title:row[1], content: row[2]};
-            }
-        );
-        if(model !== undefined) {
-            resolve(model)
-        } else {
-            reject("FAIL")
-        }
-    });
-}
-
-var getTitle = function(id) {
-    var tLog = getLog(id);
-    return tLog.title;
-}
-
-var getContent = function(id) {
-    var cLog = getLog(id);
-    return cLog.content;
-}
-
-
-
-module.exports.getLog = getLog;
-module.exports.init = init;
-module.exports.addLog = addLog;
-module.exports.getTitle = getTitle;
-module.exports.getContent = getContent;
-module.exports.generateId = generateId;
+}));
