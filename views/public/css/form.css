@@ -22,9 +22,19 @@ input[type=submit] {
 
 textarea {
     font-size: 2rem;
+    display: none;
+}
+
+#content {
+    outline: none;
+    font-size: 2rem;
 }
 
 #title {
     font-size: 7rem;
     font-family: 'Montserrat'
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
 }

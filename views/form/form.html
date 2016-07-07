@@ -13,13 +13,14 @@
 </head>
 <body>
 	<div class="container">
-	    <form action="/new" method="POST">
+	    <form action="/new" method="POST" id="form" onsubmit='return onSub()'>
 	        <input type="text" name="title" id="title" placeholder="Title"/>
-	        <textarea name="content" placeholder="Your Log"></textarea>
+	        <div id="content" contenteditable="true" data-text="Your Log"></div>
+	        <textarea name="content" placeholder="Your Log" id="contentHidden"></textarea>
 	        <input type="submit" id="submit"/>
 	    </form>
 	</div>
-	<script src="js/lib/marked.min.js"></script>
-	<script src="js/form.js"></script>
+	<!--<script src="/js/lib/marked.min.js"></script>-->
+	<script src="/js/form.js"></script>
 </body>
 </html>
