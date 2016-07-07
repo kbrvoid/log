@@ -56,6 +56,19 @@ app.get(/\/([a-z0-9]+)/, function(req, res) {
     });
 });
 
+app.get(/\/([a-z0-9]+\/raw)/, function(req, res) {
+    var urlId = req.params["0"].replace("/raw", "");
+    res.set('Content-Type', 'text/plain');
+    storage.getLog(urlId).then(currentLog => {
+        if(!currentLog) {
+            notFound(res);
+        }
+        var html = view.render(currentLog.id, currentLog.title, currentLog.content);
+        res.send(new Buffer(html));
+        log(color.green("User visited '/" + urlId + "' [RAW]"));
+    });
+});
+
 app.listen(process.env.PORT, function (req, res) {
     console.log("Log is Listening");
 });
