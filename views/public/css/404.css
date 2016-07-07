@@ -1,9 +1,9 @@
 body {
+    background: -webkit-linear-gradient(45deg, #246655, #5b378a, #fa179c, #4850e6, #2ecbe3, #4cfdb9, #2bc0e4, #eaecc6, #c02425, #f0cb35, #403a3e, #be5869);
     background: linear-gradient(45deg, #246655, #5b378a, #fa179c, #4850e6, #2ecbe3, #4cfdb9, #2bc0e4, #eaecc6, #c02425, #f0cb35, #403a3e, #be5869);
     background-size: 2400% 2400%;
 
     -webkit-animation: gradient 30s ease infinite;
-    -moz-animation: gradient 30s ease infinite;
     animation: gradient 30s ease infinite;
     color: white;
 }
