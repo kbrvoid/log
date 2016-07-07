@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
     margin:0;
     padding:0;
@@ -28,8 +32,8 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
     font-size: 2rem;
 }
 
+
 button {
-    z-index: 1000 !important;
 	padding: 20px 80px !important;
     text-decoration: none;
     border: 2px solid #333 !important;
@@ -51,6 +55,28 @@ button:hover {
     border-radius: 30px;
     opacity: 1 !important;
 }
+
+#about {
+    background-color: white;
+    color: #2f2f2f;
+    color: rgba(0, 0, 0, 0.8);
+    min-height: 50vh;
+    width: 100vw;
+    text-align: left;
+}
+
+#about .container {
+  padding-top: calc(100vh/5);
+}
+
+.center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+
 
 /*@-webkit-keyframes gradient {*/
 /*    0%{background-position:0% 50%}*/
