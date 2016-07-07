@@ -38,7 +38,7 @@ textarea {
 
 #submit {
     bottom: 5%;
-    position: absolute;
+    position: fixed;
 }
 
 [contentEditable=true]:empty:not(:focus):before{
