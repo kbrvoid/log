@@ -24,9 +24,14 @@ body {
     color: white;
 }
 
-h1 {
+#header {
     font-family: 'Montserrat';
-    font-size: 7rem;
+    font-size: 10rem;
+}
+
+#tagLine {
+    font-family: "Quicksand";
+    font-size: 2rem;
 }
 
 button {
