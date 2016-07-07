@@ -1,27 +1,21 @@
-body {
-    /*background: linear-gradient(45deg, #246655, #5b378a, #fa179c, #4850e6, #2ecbe3, #4cfdb9, #2bc0e4, #eaecc6, #c02425, #f0cb35, #403a3e, #be5869);*/
-    /*background-size: 2400% 2400%;*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    margin:0;
+    padding:0;
+}
 
-    /*-webkit-animation: gradient 30s ease infinite;*/
-    /*-moz-animation: gradient 30s ease infinite;*/
-    /*animation: gradient 30s ease infinite;*/
-    background-image: url('https://images.unsplash.com/photo-1444424050109-31f057e1e858?crop=entropy&fit=crop&fm=jpg&h=650&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375');
-
-  /* Background image is centered vertically and horizontally at all times */
-  background-position: center center;
-
-  /* Background image doesn't tile */
-  background-repeat: no-repeat;
-
-  /* Background image is fixed in the viewport so that it doesn't move when
-     the content's height is greater than the image's height */
-  background-attachment: fixed;
-
-  /* This is what makes the background image rescale based
-     on the container's size */
-  background-size: cover;
-
+#hero {
     color: white;
+    top:0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1444424050109-31f057e1e858?crop=entropy&fit=crop&fm=jpg&h=650&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
 }
 
 #header {
