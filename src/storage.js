@@ -7,6 +7,8 @@ var sequelize = new Sequelize('database', 'username', 'password', {
     min: 0,
     idle: 10000
   },
+  
+  logging: false,
 
   storage: 'database.sqlite'
 });

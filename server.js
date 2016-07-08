@@ -45,13 +45,15 @@ app.post('/new', function(req, res) {
 
 app.get(/\/([a-z0-9]+\/raw)/, function(req, res) {
     var urlId = req.params["0"].replace("/raw", "");
-    res.set('Content-Type', 'text/plain');
     storage.getLog(urlId).then(currentLog => {
         if(!currentLog) {
+            res.set('Content-Type', 'text/html');
             notFound(res);
+        } else {
+            res.set('Content-Type', 'text/plain');
+            res.send(currentLog.content);
+            log(color.green("User visited '/" + urlId + "' [RAW]"));
         }
-        res.send(currentLog.content);
-        log(color.green("User visited '/" + urlId + "' [RAW]"));
     });
 });
 
