@@ -13,6 +13,7 @@ var sequelize = new Sequelize('database', 'username', 'password', {
   storage: 'database.sqlite'
 });
 
+
 var Log = sequelize.define('Log', {
     id: { type: Sequelize.STRING(7), unique: true, primaryKey: true },
     title: Sequelize.TEXT,
